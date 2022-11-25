@@ -9,6 +9,8 @@ library(tidyverse)
 library(palmerpenguins)
 library(ggridges)
 
+# :: after the library name shows what it contains while typing it
+#palmerpenguins::
 
 # Data --------------------------------------------------------------------
 
@@ -32,14 +34,12 @@ ggplot(data = penguins,
   geom_point(aes(colour = species))
 
 
-
-
 # Exercise 2 --------------------------------------------------------------
 
 # Change the aes() arguments
 ggplot(data = penguins,
-       aes(x = bill_depth_mm, y = flipper_length_mm)) +
-  geom_point(aes(size = bill_length_mm, shape = island))
+       aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(aes(size = species, shape = island))
 
 
 # Exercise 3 --------------------------------------------------------------
@@ -48,7 +48,8 @@ ggplot(data = penguins,
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(aes(colour = species)) +
-  labs(x = "Body mass (g)", y = "Bill length (mm)", colour = "Species") +
+  labs(x = "Body mass (g)", 
+       y = "Bill length (mm)", colour = "Species") +
   # Change legend position
   theme(legend.position = "bottom")
 
@@ -59,7 +60,8 @@ ggplot(data = penguins,
 ggplot(data = penguins,
        aes(x = body_mass_g, y = species)) +
   geom_density_ridges() +
-  theme_ridges() + 
+#  theme_ridges() + #This works too 
+  theme_ridges(font_size = 16) + 
   theme(legend.position = "none")
 
 
